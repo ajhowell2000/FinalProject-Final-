@@ -1,0 +1,130 @@
+
+.rect1{
+    fill:red;
+    transform:translate(150px ,250px);
+}
+
+#rect1{
+    fill:blue;
+transform: translate(100px ,100px);
+}
+
+#rect2{
+    fill:red;
+transform: translate(250px ,250px);
+}
+#rect3{
+    fill:red;
+transform: translate(200px ,100px);
+    
+}
+#rect4{
+    fill:green;
+transform: translate(150px,100px);
+}
+#rect5{
+    fill:yellow;
+transform: translate(200px ,250px);
+}
+
+#rect6{
+    fill:yellow;
+transform: translate(100px ,200px);
+}
+
+#rect7{
+    fill:green;
+transform: translate(250px ,100px);
+}
+#rect8{
+    fill:blue;
+transform: translate(100px,250px);
+}
+#rect9{
+    fill:red;
+transform: translate(200px ,200px);
+}
+#rect10{
+    fill:orange;
+transform: translate(250px ,150px);
+}
+#rect11{
+    fill:green;
+transform: translate(200px ,150px);
+}
+#rect12{
+    fill:purple;
+transform: translate(250px, 200px);
+}
+#rect13{
+    fill:red;
+transform: translate(150px ,150px);
+}
+#rect14{
+    fill:orange;
+transform: translate(100px ,150px);
+}
+#rect15{
+    fill:red;
+transform: translate(150px ,200px);
+}
+
+
+
+.Text:nth-of-type(1){
+transform: translate(120px ,125px)}
+
+.Text:nth-of-type(3){
+    transform: translate(155px ,125px)
+}
+
+.Text:nth-of-type(2){
+     transform: translate(170px ,180px)
+}
+
+.Text:nth-of-type(4){
+     transform: translate(105px ,180px)
+}
+.Text:nth-of-type(5){
+     transform: translate(105px ,230px)
+}
+.Text:nth-of-type(6){
+     transform: translate(205px ,180px)
+}
+.Text:nth-of-type(7){
+     transform: translate(105px ,280px)
+}
+.Text:nth-of-type(8){
+     transform: translate(155px ,280px)
+}
+.Text:nth-of-type(9){
+     transform: translate(205px ,125px)
+}
+.Text:nth-of-type(10){
+     transform: translate(255px ,180px)
+}
+.Text:nth-of-type(11){
+     transform: translate(155px ,230px)
+}
+.Text:nth-of-type(12){
+     transform: translate(255px ,125px)
+}
+.Text:nth-of-type(13){
+     transform: translate(270px ,280px)
+}
+.Text:nth-of-type(14){
+     transform: translate(220px ,230px)
+}
+.Text:nth-of-type(15){
+     transform: translate(255px ,230px)
+}
+.Text:nth-of-type(16){
+     transform: translate(205px ,280px)
+}
+
+
+#rect0{
+    fill:red;
+    transform:translate(150px ,250px);
+}
+
