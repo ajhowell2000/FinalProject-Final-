@@ -1,6 +1,6 @@
 
 .rect1{
-    fill:red;
+    fill:orange;
     transform:translate(150px ,250px);
 }
 
@@ -123,8 +123,53 @@ transform: translate(120px ,125px)}
 }
 
 
-#rect0{
-    fill:red;
-    transform:translate(150px ,250px);
+#rect20{
+    fill:blue;
 }
 
+#rect40{
+    fill:orange;
+}
+
+#rect60{
+    fill:pink
+}
+
+#rect80{
+    fill:green;
+}
+
+#rect100{
+    fill:purple
+}
+
+#rect120{
+    fill:yellow
+}
+
+#rect140{
+    fill:turquoise
+}
+
+#rect160{
+    fill:purple
+}
+
+#rect180{
+    fill:orange
+}
+
+#rect200{
+    fill:green
+}
+
+#rect220{
+    fill:turquoise
+}
+#rect240{
+    fill:blue
+}
+
+#rect260{
+    fill:purple
+}
