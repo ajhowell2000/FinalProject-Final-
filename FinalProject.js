@@ -164,11 +164,11 @@ var initPlot= function(team, Scales, xval, yval){
   console.log(team)  
  var xScale= d3.scaleLinear()
             .domain([0,d3.max(team, function(club){ return Number.parseInt(club[xval])})])
-            .range([0, Scales.bandwidth()-30])
+            .range([0, Scales.bandwidth()-50])
 
  var yScale= d3.scaleLinear()
                     .domain([0,d3.max(team, function(club){return Number.parseInt(club[yval])})])
-            .range([Scales.bandwidth()-30,0])
+            .range([Scales.bandwidth()-50,30])
  
  //function(club){ return xScale(club.Championships/10)})
    
@@ -185,26 +185,28 @@ var initPlot= function(team, Scales, xval, yval){
     .attr("cy",function(club){ return yScale(club[yval])})
     .attr("r", 4)
     .attr("fill", "black")
-    .attr("transform","translate(123,"+(80)+")")
+    .attr("transform","translate(128,"+(80)+")")
     createaxes3(xScale,yScale,g)
 }
 
 
 var createaxes3= function(xScale,yScale,g){
      var yAxis=d3.axisLeft(yScale)
+     .ticks(5)
+    
     var xAxis=d3.axisBottom(xScale)
-   
+        .ticks(2)
     
    //creating x-axis
     g.append("g")
         .attr("class", "axis5")
-.attr("transform","translate(123,"+(200)+")")
+.attr("transform","translate(128,"+(180)+")")
         .call(xAxis)
     //y-axis
    
     g.append("g")
     .attr("class", "axis6")
-    .attr("transform","translate(123,"+(80)+")")
+    .attr("transform","translate(128,"+(80)+")")
     .call(yAxis)}
 
 

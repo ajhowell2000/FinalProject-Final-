@@ -1,17 +1,17 @@
 ﻿Name1,Name2,Cor
 championships,championships,1
-value ,value ,1
-championships ,value ,0.684
+value,value ,1
+championships,value ,0.684
 value ,championships,0.684
 championships,wins,0.585
 value,wins,0.815
 championships,attendance,0.665
-value ,attendance,0.79
+value,attendance,0.79
 wins,championships,0.585
 attendance,value ,0.79
-wins ,value ,0.815
+wins,value ,0.815
 attendance,championships,0.665
 wins,wins,1
 attendance,attendance,1
-wins ,attendance,0.705
+wins,attendance,0.705
 attendance,wins,0.705
