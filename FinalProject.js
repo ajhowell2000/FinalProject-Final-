@@ -7,8 +7,7 @@ Promise.all([
     // files[1] will contain file2.csv
 drawgraph(files[0])
 drawgraph2(files[2])
-ChampPlot(files[1])
-VvC(files[1])
+initPlot(files[1])
 }).catch(function(err) {
     console.log("Something went wrong", err)
     // handle error here
@@ -139,6 +138,7 @@ var rect2= svg2.selectAll("rect")
     .attr("transform","translate(100,"+(75)+")")
     .attr("fill", "red")
 createaxes2(Scales)
+    console.log(Scales.bandwidth())
     
 }
 
@@ -159,20 +159,25 @@ var createaxes2= function(Scales){
     .call(yAxis)
 }
 
-var ChampPlot= function(team){
-    var screen={width:1800, height:1000}
+var initPlot= function(team, Scales, xval, yval){
+    
+var screen={width:1800, height:1000}
 
 var margins={top:800, bottom:500, left:200, right:500,}
 var graph={width:screen.width-margins.left-margins.right}
     
+  var Scales= d3.scaleBand()
+    .domain(["championships", "value","wins" ,"attendance"])
+    .range([0,graph.width-500])
+
     
  var xScale= d3.scaleLinear()
-            .domain([0,d3.max(team, function(club){return club.Championships})])
-            .range([0,graph.width-1000])
- 
+            .domain([0,d3.max(team, function(club){ return Number.parseInt(club.Championships)})])
+            .range([0, Scales.bandwidth()-30])
+
  var yScale= d3.scaleLinear()
-                    .domain([0,d3.max(team, function(club){return club.Championships})])
-            .range([graph.width-1000,0])
+                    .domain([0,d3.max(team, function(club){return Number.parseInt(club.Championships)})])
+            .range([Scales.bandwidth()-30,0])
  
  //function(club){ return xScale(club.Championships/10)})
    
@@ -181,63 +186,46 @@ var graph={width:screen.width-margins.left-margins.right}
  svg2.selectAll("circle")
     .data(team)
     .enter()
+    .append("g")
+    .attr("class","circles")
     .append("circle")
-    .attr("cx",function(club){ return xScale(club.Championships/10)})
-    .attr("cy",function(club){ return yScale(club.Championships/10)})
+    .attr("cx",function(xval){ return xScale(xval.Championships)})
+    .attr("cy",function(yval){ return yScale(yval.Championships)})
     .attr("r", 4)
     .attr("fill", "black")
-    .attr("transform","translate(125,"+(100)+")")
+    .attr("transform","translate(123,"+(80)+")")
     createaxes3(xScale,yScale)
 }
 
-var createaxes3= function(xScale,yScale){
-     var yAxis=d3.axisLeft(yScale)
-    var xAxis=d3.axisBottom(xScale)
-   
+var changeScatter= function(teams, Scales, xval, yval, target){
     
-   //creating x-axis
-    svg2.append("g")
-        .attr("class", "axis5")
-.attr("transform","translate(125,"+(200)+")")
-        .call(xAxis)
-    //y-axis
-   
-    svg2.append("g")
-    .attr("class", "axis6")
-    .attr("transform","translate(125,"+(100)+")")
-    .call(yAxis)}
-
-
-var VvC= function(team){
-    var screen={width:1800, height:1000}
-
-var margins={top:800, bottom:500, left:200, right:500,}
-var graph={width:screen.width-margins.left-margins.right}
+    //join
+    d3.select(target)
+        .select(".circles")
+        .selectAll("circle")
+        .data(teams)
     
-    
- var xScale= d3.scaleLinear()
-            .domain([0,d3.max(team, function(club){return club.Value})])
-            .range([0,graph.width-1000])
- 
- var yScale= d3.scaleLinear()
-                    .domain([0,d3.max(team, function(club){return club.Championships})])
-            .range([graph.width-1000,0])
- 
- //function(club){ return xScale(club.Championships/10)})
-   
- //function(club){ return yScale(club.Championships/10)})
-
- svg2.selectAll("circle")
-    .data(team)
+    //enter
     .enter()
     .append("circle")
-    .attr("cx",function(club){ return xScale(club.Value)})
-    .attr("cy",function(club){ return yScale(club.Championships)})
-    .attr("r", 4)
-    .attr("fill", "black")
-    .attr("transform","translate(225,"+(400)+")"),
     
-    createaxes4(xScale,yScale)
+    //exit
+    .exit
+    .remove()
+    
+    //Update
+      d3.select(target)
+        .select(".circles")
+        .selectAll("circle")
+        .transition
+        .duration(200)
+        .attr("cx",function(team){
+          return xScale(team([xval]))
+      })
+        .attr("cx",function(team){
+          return yScale(team([yval]))
+      })
+    .attr("r",4)  
 }
 
 var createaxes3= function(xScale,yScale){
@@ -248,34 +236,14 @@ var createaxes3= function(xScale,yScale){
    //creating x-axis
     svg2.append("g")
         .attr("class", "axis5")
-.attr("transform","translate(125,"+(200)+")")
+.attr("transform","translate(123,"+(200)+")")
         .call(xAxis)
     //y-axis
    
     svg2.append("g")
     .attr("class", "axis6")
-    .attr("transform","translate(125,"+(100)+")")
+    .attr("transform","translate(123,"+(80)+")")
     .call(yAxis)}
-
-    createaxes4= function(xScale,yScale){
-     var yAxis=d3.axisLeft(yScale)
-    var xAxis=d3.axisBottom(xScale)
-   
-    
-   //creating x-axis
-    svg2.append("g")
-        .attr("class", "axis7")
-.attr("transform","translate(275,"+(200)+")")
-        .call(xAxis)
-    //y-axis
-   
-    svg2.append("g")
-    .attr("class", "axis8")
-    .attr("transform","translate(275,"+(100)+")")
-    .call(yAxis)}
-
-   
-
 
 
 //var initgraph= function(){}
